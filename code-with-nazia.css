@@ -1,0 +1,224 @@
+:root {
+    color-scheme: dark;
+    --bg: #1b1b1b;
+    --line: #d9d9d9;
+    --ink: #f2f2f2;
+    --dim: #5a5a5a;
+    --chip: #2a2a2a;
+    --font: "Jost", "Avenir Next", "Avenir", "Century Gothic", system-ui, sans-serif;
+    --ease: cubic-bezier(.3, .7, .2, 1);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-weight: 300;
+    display: grid;
+    place-items: center;
+    overflow-x: hidden
+}
+
+.pill {
+    position: relative;
+    height: 64px;
+    width: 195px;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    transition: width .16s var(--ease), border-color .7s
+}
+
+.pill.welcome {
+    border-color: #333
+}
+
+.pill.bare {
+    border-color: transparent
+}
+
+.pill.cta {
+    cursor: pointer
+}
+
+.icon {
+    position: absolute;
+    left: -1.5px;
+    top: -1.5px;
+    width: 64px;
+    height: 64px;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    z-index: 3;
+    box-shadow: 6px 0 0 -4px rgba(255, 255, 255, .25);
+    transition: opacity .3s
+}
+
+.icon.under {
+    z-index: 2;
+    box-shadow: none;
+    opacity: 0;
+    transition: none
+}
+
+.icon svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--ink)
+}
+
+.field {
+    position: absolute;
+    left: 78px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity .3s
+}
+
+.lbl {
+    align-self: flex-start;
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: var(--dim);
+    line-height: 1;
+    margin-bottom: 4px
+}
+
+input {
+    font: inherit;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    width: 40px;
+    transition: width .16s var(--ease);
+    caret-color: var(--ink)
+}
+
+input:focus,
+input:focus-visible {
+    outline: none;
+    border: 0;
+    box-shadow: none
+}
+
+input[type=password] {
+    letter-spacing: .12em
+}
+
+.go {
+    position: absolute;
+    right: 12px;
+    top: 11px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--chip);
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: opacity .25s
+}
+
+.go:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px
+}
+
+.go svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.msg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 28px;
+    letter-spacing: .1em;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s
+}
+
+.msg:focus,
+.msg:focus-visible {
+    outline: none
+}
+
+.pill.welcome .msg {
+    color: #bbb
+}
+
+@keyframes shake {
+    20% {
+        transform: translateX(-9px)
+    }
+
+    40% {
+        transform: translateX(8px)
+    }
+
+    60% {
+        transform: translateX(-5px)
+    }
+
+    80% {
+        transform: translateX(3px)
+    }
+}
+
+.shake {
+    animation: shake .38s ease-out
+}
+
+@media (max-width:480px) {
+    input {
+        font-size: 22px
+    }
+
+    .msg {
+        font-size: 24px
+    }
+}
+
+
